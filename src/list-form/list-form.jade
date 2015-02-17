@@ -1,0 +1,25 @@
+h2 Form with autosave
+
+form.form-autosave.form-horizontal.col-sm-6(auto-save, auto-save-name="form1", auto-save-interval="1000", ng-submit="submit()")
+  .form-group
+    label.col-sm-2.control-label(for="name") Name
+    .col-sm-10
+      input.form-control#name.name(type="text", name="name", placeholder="Name", ng-model="formData.name")
+  .form-group
+    label.col-sm-2.control-label(for="description") Description
+    .col-sm-10
+      input.form-control.description(type="text", name="description", placeholder="Description", ng-model="formData.description")
+  each i in [1, 2, 3, 4, 5]
+    .form-group
+      label.col-sm-2.control-label(for="item-" + i)= 'Item ' + i
+      .col-sm-10
+        input.form-control.item(id="item-" + i, placeholder="Item " + i, name="item_" + i, ng-model="formData.item_" + i)
+  .form-group.form-inline
+    .col-sm-offset-2.col-sm-10
+      a.btn.btn-default(ng-href="/") Back
+      | &nbsp;
+      button.btn.btn-default(ng-click="reset()") Cancel
+      | &nbsp;
+      input.btn.btn-default(type="submit", value="Submit")
+
+.results {{submittedData}}
